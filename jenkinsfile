@@ -9,9 +9,9 @@ pipeline {
   }
   stage('Build') {
    steps {
-    sh 'WORKDIR $GOPATH/src/netology-test/'
-    sh 'COPY . ./'
-    sh 'RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .'
+    sh 'cd $GOPATH/src/netology-test/'
+    sh 'cp . ./'
+    sh 'CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .'
     sh 'curl -u admin:Rybxr3VP27T9BKm http://localhost:8081/repository/netology-bin/ --upload-file netology-test.tgz -v'
    }
   }
