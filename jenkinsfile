@@ -9,8 +9,8 @@ pipeline {
   }
   stage('Build') {
    steps {
-    sh 'cd /var/lib/jenkins/workspace/netology-test-33'
-    sh 'cp -r . ./'
+    sh 'cd /var/lib/jenkins/workspace/netology-test-33/'
+    sh 'cp -r ./'
     sh 'CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .'
     sh 'curl -u admin:Rybxr3VP27T9BKm http://localhost:8081/repository/netology-bin/ --upload-file netology-test.tgz -v'
    }
