@@ -1,0 +1,16 @@
+pipeline {
+ agent any
+ stages {
+  stage('Git') {
+   steps {
+    sh 'go env -w GO111MODULE=auto'
+    sh 'go test .'
+   }
+  }
+  stage('Build') {
+   steps {
+    sh 'docker build .'
+   }
+  }
+ }
+}
